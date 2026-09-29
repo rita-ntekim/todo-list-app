@@ -1,0 +1,20 @@
+# Files git should IGNORE (never upload).
+# Anything listed here stays on your computer only.
+
+# --- Windows junk that folders create automatically ---
+Thumbs.db
+ehthumbs.db
+desktop.ini
+
+# --- macOS junk, in case you ever open this folder on a Mac ---
+.DS_Store
+
+# --- VS Code's personal window layout: not part of the app ---
+.vscode/
+
+# --- Scratch notes and logs you make while experimenting ---
+scratch/
+*.log
+
+# --- Node bits, if you ever add a package.json ---
+node_modules/

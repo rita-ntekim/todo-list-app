@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<!--
+  index.html  ->  the STRUCTURE of the page (the "skeleton").
+  The stylesheet (styles.css) makes it pretty.
+  The script (app.js) makes it work.
+-->
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>My Todo List + Focus Timer</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+
+  <body>
+    <main class="app">
+      <!-- ============================================================
+           HEADER
+           ============================================================ -->
+      <header class="app-header">
+        <h1>My Day</h1>
+        <p class="subtitle" id="dateLabel">Loading date&hellip;</p>
+      </header>
+
+      <!-- ============================================================
+           POMODORO FOCUS TIMER
+           ============================================================ -->
+      <section class="card timer-card" aria-labelledby="timerHeading">
+        <h2 id="timerHeading">Focus Timer</h2>
+
+        <!-- Three preset lengths. data-minutes is read by app.js -->
+        <div class="mode-buttons" role="group" aria-label="Timer length">
+          <button type="button" class="mode-btn is-active" data-minutes="25" data-label="Focus">Focus 25</button>
+          <button type="button" class="mode-btn" data-minutes="5" data-label="Break">Break 5</button>
+          <button type="button" class="mode-btn" data-minutes="15" data-label="Long break">Long 15</button>
+        </div>
+
+        <!-- The big clock -->
+        <p class="time" id="timeDisplay" aria-live="polite">25:00</p>
+
+        <!-- Which task the timer is currently attached to -->
+        <p class="focus-task">
+          Focusing on:
+          <strong id="focusTaskLabel">nothing (pick a task with 🎯)</strong>
+        </p>
+
+        <div class="timer-controls">
+          <button type="button" id="startPauseBtn" class="btn btn-primary">Start</button>
+          <button type="button" id="resetBtn" class="btn btn-ghost">Reset</button>
+        </div>
+
+        <p class="session-info">Pomodoros finished today: <strong id="sessionCount">0</strong></p>
+      </section>
+
+      <!-- ============================================================
+           TODO LIST
+           ============================================================ -->
+      <section class="card" aria-labelledby="todoHeading">
+        <h2 id="todoHeading">Tasks</h2>
+
+        <!-- CREATE: type a task here and press Enter or click Add -->
+        <form id="taskForm" class="task-form" autocomplete="off">
+          <input
+            id="taskInput"
+            class="task-input"
+            type="text"
+            placeholder="What needs doing?"
+            maxlength="120"
+            aria-label="New task"
+          />
+          <button type="submit" class="btn btn-primary">Add</button>
+        </form>
+
+        <!-- Filters: show all tasks, only unfinished, or only finished -->
+        <div class="filters" role="group" aria-label="Filter tasks">
+          <button type="button" class="filter-btn is-active" data-filter="all">All</button>
+          <button type="button" class="filter-btn" data-filter="active">To do</button>
+          <button type="button" class="filter-btn" data-filter="done">Done</button>
+          <button type="button" class="clear-btn" id="clearDoneBtn">Clear done</button>
+        </div>
+
+        <!-- app.js fills this <ul> with one <li> per task -->
+        <ul id="taskList" class="task-list"></ul>
+
+        <p class="empty-message" id="emptyMessage" hidden>Nothing here yet. Add your first task above &#128512;</p>
+        <p class="counter" id="taskCounter"></p>
+      </section>
+
+      <footer class="app-footer">
+        <p>Saved automatically in this browser. Double-click a task to rename it.</p>
+      </footer>
+    </main>
+
+    <script src="app.js"></script>
+  </body>
+</html>
